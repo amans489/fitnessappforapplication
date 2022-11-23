@@ -32,14 +32,15 @@ public class FitnessForYouController {
 
     @FXML
     void caloriesBurntDisplay(ActionEvent event) {
-    	System.out.println("Calories burnt Displayed");
+    	
     	Scene caloriesBurntScene = new Scene(new Label("Placeholder"));
     	applicationStage.setScene(caloriesBurntScene);
     }
 
     @FXML
     void workoutDisplay(ActionEvent event) {
-    	
+    	Scene workoutDisplayScene = new Scene(new Label("Placeholder")); 
+    	applicationStage.setScene(workoutDisplayScene);
     }
    
     @FXML 
