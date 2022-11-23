@@ -17,7 +17,7 @@ public class FitnessForYouController {
 	Stage applicationStage;
     @FXML
     private ChoiceBox<?> weekExerciseChoiceBox;
-   
+    
     @FXML
     private TextField runningDistanceTextField;
 
@@ -31,13 +31,15 @@ public class FitnessForYouController {
    private Button calculate;
 
     @FXML
-    void bmiDisplay(ActionEvent event) {
-    
+    void caloriesBurntDisplay(ActionEvent event) {
+    	System.out.println("Calories burnt Displayed");
+    	Scene caloriesBurntScene = new Scene(new Label("Placeholder"));
+    	applicationStage.setScene(caloriesBurntScene);
     }
 
     @FXML
     void workoutDisplay(ActionEvent event) {
-   
+    	
     }
    
     @FXML 

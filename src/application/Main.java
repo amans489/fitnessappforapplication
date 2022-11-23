@@ -17,6 +17,8 @@ public class Main extends Application {
 			
 			FXMLLoader loader = new FXMLLoader();
 			VBox root = loader.load(new FileInputStream("src/application/FitnessForYouView.fxml"));
+			FitnessForYouController controller = (FitnessForYouController)loader.getController();
+			controller.applicationStage = primaryStage;
 			Scene scene = new Scene(root,600,400);
 			
 			primaryStage.setScene(scene);

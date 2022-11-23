@@ -65,7 +65,7 @@
       </HBox>
       <HBox prefHeight="146.0" prefWidth="586.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#bmiDisplay" text="Display BMI">
+            <Button mnemonicParsing="false" onAction="#caloriesBurntDisplay" text="Display Calories Burned during a week">
                <HBox.margin>
                   <Insets left="190.0" top="50.0" />
                </HBox.margin>
