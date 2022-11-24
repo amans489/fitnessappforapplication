@@ -63,6 +63,12 @@
             </ChoiceBox>
          </children>
       </HBox>
+      
+      <Button mnemonicParsing="false" onAction="#userInfo" text="Enter User Info">
+         <VBox.margin>
+            <Insets bottom="10.0" left="150.0" right="10.0" top="10.0" />
+         </VBox.margin></Button>
+      
       <HBox prefHeight="146.0" prefWidth="586.0">
          <children>
             <Button mnemonicParsing="false" onAction="#bmiDisplay" text="Display BMI">
