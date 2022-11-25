@@ -9,6 +9,7 @@ double durationR;
 
 
  CountR(int energy, double run, double pounds){
+	
 	 METenergyR = energy;
 	 weightR = pounds;
 	 durationR = run;
