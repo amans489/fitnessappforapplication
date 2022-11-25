@@ -64,6 +64,7 @@ public class FitnessForYouController {
 
 	@FXML
   void userInfo(ActionEvent event){
+		System.out.println("for git");
 //RUNNING SCENE 		
 		VBox runningContainer = new VBox();
 		
