@@ -63,9 +63,11 @@ public class FitnessForYouController {
 
 
 	@FXML
-	void userInfo(ActionEvent event){
+  void userInfo(ActionEvent event){
 //RUNNING SCENE 		
 		VBox runningContainer = new VBox();
+		
+		TextField weightTextfield = new TextField();
 		
 		Scene runningScene = new Scene(runningContainer);
 		
@@ -73,9 +75,10 @@ public class FitnessForYouController {
 
 		// text box with its label in a h box     
 		HBox durationR = new HBox();
-		Label runningLabel = new Label("Duration Ran");
+		Label runningLabel = new Label("Time spent running:");
 		
 		TextField runningDurationTextField = new TextField();
+		
 		// adding label and text box to H box                 
 		durationR.getChildren().addAll(runningLabel, runningDurationTextField);
 		// adding the H box to the V box                      
@@ -84,7 +87,7 @@ public class FitnessForYouController {
 		Label caloriesBurnedR = new Label("Calories Burned: ");
 
 		Button calculateR = new Button ("Calculate Calories Burned");
-		calculateR.setOnAction(e -> calculateCaloriesR(runningScene));
+		calculateR.setOnAction(e -> calculateCaloriesR(runningScene,runningDurationTextField, weightTextfield, caloriesBurnedR));
 		runningContainer.getChildren().addAll(caloriesBurnedR, calculateR);
 //JOGGING
 		VBox joggingContainer = new VBox();
@@ -92,7 +95,7 @@ public class FitnessForYouController {
 		Scene joggingScene = new Scene(joggingContainer);
 		// text box with its label in a h box     
 		HBox durationJ = new HBox();
-		Label joggingLabel = new Label("How long did you jog?");
+		Label joggingLabel = new Label("Time spent jogging: ");
 		TextField joggingDurationTextField = new TextField();
 		// adding label and text box to H box                 
 		durationJ.getChildren().addAll(joggingLabel, joggingDurationTextField);
@@ -101,7 +104,7 @@ public class FitnessForYouController {
 
 		Label caloriesBurnedJ = new Label("Calories Burned: ");
 		Button calculateJ = new Button("Calculate Calories Burned");
-		calculateJ.setOnAction(e-> calculateCaloriesJ(joggingScene));
+		calculateJ.setOnAction(e-> calculateCaloriesJ(joggingScene, joggingDurationTextField, weightTextfield, caloriesBurnedJ));
 		joggingContainer.getChildren().addAll(caloriesBurnedJ, calculateJ);
 
 		
@@ -112,9 +115,10 @@ public class FitnessForYouController {
 
 		// text box with its label in a h box     
 		HBox durationW = new HBox();
-		Label walkingLabel = new Label("Distance Ran in Kilometers");
+		Label walkingLabel = new Label("Time spent walking");
 		
 		TextField walkingDurationTextField = new TextField();
+		
 		// adding label and text box to H box                 
 		durationW.getChildren().addAll(walkingLabel, walkingDurationTextField);
 		// adding the H box to the V box                      
@@ -123,7 +127,7 @@ public class FitnessForYouController {
 		Label caloriesBurnedW = new Label("Calories Burned: ");
 
 		Button calculateW = new Button("Calculate Calories Burned");
-		calculateW.setOnAction(e->calculateCaloriesW(walkingScene));
+		calculateW.setOnAction(e->calculateCaloriesW(walkingScene, walkingDurationTextField, weightTextfield, caloriesBurnedW));
 		
 		walkingContainer.getChildren().addAll(caloriesBurnedW, calculateW);
 
@@ -161,7 +165,7 @@ public class FitnessForYouController {
 		//runningButton.setOnAction(new CountR)
 		runningButton.setOnAction(e-> applicationStage.setScene(runningScene));
 		
-		TextField weightTextfield = new TextField();
+		//TextField weightTextfield = new TextField();
 		TextField heightTextfield = new TextField();
 
 		Label heightLabel = new Label("Enter Height:  ");
@@ -220,7 +224,7 @@ public class FitnessForYouController {
 //}
 // this method will calculate the calories burned running using the calculate class
 double totalCaloriesBurnedR = 0.0;
-void calculateCaloriesR (Scene runningScene) {
+void calculateCaloriesR (Scene runningScene, TextField runningDurationTextField, TextField weightTextField, Label caloriesBurnedR) {
 	//need to add a get value for the weight
 	int METR = 8;
 	double bodyWeightR = 0.0;
@@ -235,7 +239,7 @@ void calculateCaloriesR (Scene runningScene) {
 	CountR caloriesR = new CountR(METR, durationRan,bodyWeightR );
 	//calories will be caluclated in the Countr class using the getCalorieCalc method
 
-	totalCaloriesBurnedR += caloriesR.getCalorieCalc();
+	totalCaloriesBurnedR = caloriesR.getCalorieCalc();
 	//updatelabel
 	caloriesBurnedR.setText(String.format("Calories Burned: "+totalCaloriesBurnedR));
 
@@ -266,17 +270,17 @@ void calculateCaloriesR (Scene runningScene) {
 	//applicationStage.setScene(joggingScene);
 //}
 double totalCaloriesBurnedJ = 0.0;
-void calculateCaloriesJ (Scene joggingScene) {
+void calculateCaloriesJ (Scene joggingScene, TextField joggingDurationTextField, TextField weightTextfield, Label caloriesBurnedJ) {
 	//need to add a get value for the weight
 	int METJ = 7;
 	double bodyWeightJ = 0.0;
 	double totalCaloriesBurnedJ = 0.0;
 
-	String DurationJ=joggingDurationTextField.getText();
+	String DurationJ= joggingDurationTextField.getText();
 	System.out.println("jog duration" + DurationJ);
 	Double durationJog = Double.parseDouble(DurationJ);
 	
-	String BWJ = weightTextField.getText();
+	String BWJ = weightTextfield.getText();
 	System.out.println("weight:"+ BWJ);
 	bodyWeightJ = Double.parseDouble(BWJ);
 	//this invokes the class that calculates the calories burned
@@ -316,16 +320,19 @@ void calculateCaloriesJ (Scene joggingScene) {
 	//applicationStage.setScene(walkingScene);
 //}
 double totalCaloriesBurnedW = 0.0;
- void calculateCaloriesW (Scene walkingScene) {
+ void calculateCaloriesW (Scene walkingScene, TextField walkingDurationTextField, TextField weightTextfield, Label caloriesBurnedW) {
 	//need to add a get value for the weight
 	int METW = 4;
 	double bodyWeightW = 0.0;
 	double totalCaloriesBurnedW = 0.0;
-
-	String DurationW= walkingDurationTextField.getText();
-	Double durationWalk = Double.parseDouble(DurationW);
 	
-	String BWW = weightTextField.getText();
+	String DurationW= walkingDurationTextField.getText();
+	if(DurationW != null) {
+		System.out.println("textfield"+ walkingDurationTextField.getText());
+		Double durationWalk = Double.parseDouble(DurationW);
+	
+	
+	String BWW = weightTextfield.getText();
 	bodyWeightW = Double.parseDouble(BWW);
 	//this invokes the class that calculates the calories burned
 	//have to add soemthing the get the bodyweight 
@@ -333,11 +340,12 @@ double totalCaloriesBurnedW = 0.0;
 	//calories will be caluclated in the Countr class using the getCalorieCalc method
 
 	totalCaloriesBurnedW += caloriesW.getCalorieCalc();
+	
 	//maybe add method in CountW class that can asses which day of the week (getDayOfWeek)
 	//updatelabel
 	caloriesBurnedW.setText(String.format("Calories Burned: "+totalCaloriesBurnedW));
 	
-	
+	}
 
 }
  
@@ -347,6 +355,7 @@ void calorieDayOfWeek (Scene mainScene) {
 			String dayOfTheWeek = (String) weekExerciseChoiceBox.getValue();
 			
 			if(dayOfTheWeek == "Monday") {
+				
 				 totalCaloriesMonday += totalCaloriesBurnedW;
 				 totalCaloriesMonday += totalCaloriesBurnedJ;
 				 totalCaloriesMonday += totalCaloriesBurnedR;
