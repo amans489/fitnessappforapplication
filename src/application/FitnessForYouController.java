@@ -28,6 +28,13 @@ import javafx.stage.Stage;
 
 public class FitnessForYouController {
 	Stage applicationStage;
+	double mondaycaloriesburned = 0.0;
+	double tuesdaycaloriesburned = 0.0;
+	double wednesdaycaloriesburned = 0.0;
+	double thursdaycaloriesburned = 0.0;
+	double fridaycaloriesburned = 0.0;
+	double saturdaycaloriesburned = 0.0;
+	double sundaycaloriesburned = 0.0;
     @FXML
     private ChoiceBox<?> weekExerciseChoiceBox;
     
