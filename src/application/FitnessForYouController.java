@@ -91,6 +91,7 @@ public class FitnessForYouController {
     @FXML
     void userInfo(ActionEvent event){
   //RUNNING SCENE 		
+    	Scene mainscene = applicationStage.getScene();
   		VBox runningContainer = new VBox();
   		
   		TextField weightTextfield = new TextField();
@@ -151,11 +152,12 @@ public class FitnessForYouController {
   		walkingContainer.getChildren().add(durationW);
 
   		Label caloriesBurnedW = new Label("Calories Burned: ");
-
+  		Button gotoinputscene = new Button("go to input scene");
+  		gotoinputscene.setOnAction(e -> applicationStage.setScene(mainscene));
   		Button calculateW = new Button("Calculate Calories Burned");
   		calculateW.setOnAction(e->calculateCaloriesW(walkingScene, walkingDurationTextField, weightTextfield, caloriesBurnedW));
   		
-  		walkingContainer.getChildren().addAll(caloriesBurnedW, calculateW);
+  		walkingContainer.getChildren().addAll(caloriesBurnedW, calculateW,gotoinputscene);
 
   		
   //MARZIAS SCENE
