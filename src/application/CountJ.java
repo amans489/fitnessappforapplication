@@ -1,6 +1,6 @@
 package application;
 
-public class CountR {
+public class CountJ {
 
 double weight;
 int METenergy;
@@ -8,7 +8,7 @@ double distance;
 
 
 
- CountR(int energy, double run, double pounds){
+ CountJ(int energy, double run, double pounds){
 	 METenergy = energy;
 	 weight = pounds;
 	 distance = run;
