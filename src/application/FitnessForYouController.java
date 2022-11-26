@@ -91,7 +91,7 @@ public class FitnessForYouController {
     @FXML
     void userInfo(ActionEvent event){
   //RUNNING SCENE 		
-    	Scene mainscene = applicationStage.getScene();
+    	
   		VBox runningContainer = new VBox();
   		
   		TextField weightTextfield = new TextField();
@@ -114,8 +114,10 @@ public class FitnessForYouController {
   		Label caloriesBurnedR = new Label("Calories Burned: ");
 
   		Button calculateR = new Button ("Calculate Calories Burned");
+  		Button gotoinputscene = new Button("go to input scene");
+  		gotoinputscene.setOnAction(e -> userInfo(event));
   		calculateR.setOnAction(e -> calculateCaloriesR(runningScene,runningDurationTextField, weightTextfield, caloriesBurnedR));
-  		runningContainer.getChildren().addAll(caloriesBurnedR, calculateR);
+  		runningContainer.getChildren().addAll(caloriesBurnedR, calculateR,gotoinputscene);
   //JOGGING
   		VBox joggingContainer = new VBox();
   		
@@ -130,9 +132,11 @@ public class FitnessForYouController {
   		joggingContainer.getChildren().add(durationJ);
 
   		Label caloriesBurnedJ = new Label("Calories Burned: ");
+  		gotoinputscene = new Button("go to input scene");
+  		gotoinputscene.setOnAction(e -> userInfo(event));
   		Button calculateJ = new Button("Calculate Calories Burned");
   		calculateJ.setOnAction(e-> calculateCaloriesJ(joggingScene, joggingDurationTextField, weightTextfield, caloriesBurnedJ));
-  		joggingContainer.getChildren().addAll(caloriesBurnedJ, calculateJ);
+  		joggingContainer.getChildren().addAll(caloriesBurnedJ, calculateJ,gotoinputscene);
 
   		
   //WALKING
@@ -152,8 +156,8 @@ public class FitnessForYouController {
   		walkingContainer.getChildren().add(durationW);
 
   		Label caloriesBurnedW = new Label("Calories Burned: ");
-  		Button gotoinputscene = new Button("go to input scene");
-  		gotoinputscene.setOnAction(e -> applicationStage.setScene(mainscene));
+  		gotoinputscene = new Button("go to input scene");
+  		gotoinputscene.setOnAction(e -> userInfo(event));
   		Button calculateW = new Button("Calculate Calories Burned");
   		calculateW.setOnAction(e->calculateCaloriesW(walkingScene, walkingDurationTextField, weightTextfield, caloriesBurnedW));
   		
@@ -387,7 +391,7 @@ public class FitnessForYouController {
   				 totalCaloriesMonday += totalCaloriesBurnedW;
   				 totalCaloriesMonday += totalCaloriesBurnedJ;
   				 totalCaloriesMonday += totalCaloriesBurnedR;
-  				 
+  				 mondaycaloriesburned = totalCaloriesMonday;
   			}
   			if(dayOfTheWeek == "Tuesday") {
   				
