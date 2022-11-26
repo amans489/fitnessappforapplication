@@ -81,5 +81,10 @@
             </Button>
          </children>
       </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#userInfo" text="User Input" />
+         </children>
+      </HBox>
    </children>
 </VBox>
