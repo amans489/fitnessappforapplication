@@ -2,6 +2,9 @@
 
 package application;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -27,6 +30,14 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class FitnessForYouController {
+	double [] monday = new double[3];
+	double [] tuesday = new double[3];
+	double [] wednesday = new double[3];
+	double [] thursday = new double[3];
+	double [] friday = new double[3];
+	double [] saturday = new double[3];
+	double [] sunday = new double[3];
+	
 	Stage applicationStage;
 	double mondaycaloriesburned = 0.0;
 	double tuesdaycaloriesburned = 0.0;
@@ -90,6 +101,8 @@ public class FitnessForYouController {
 
     @FXML
     void userInfo(ActionEvent event){
+    	
+    	
   //RUNNING SCENE 		
     	
   		VBox runningContainer = new VBox();
@@ -118,6 +131,7 @@ public class FitnessForYouController {
   		gotoinputscene.setOnAction(e -> userInfo(event));
   		calculateR.setOnAction(e -> calculateCaloriesR(runningScene,runningDurationTextField, weightTextfield, caloriesBurnedR));
   		runningContainer.getChildren().addAll(caloriesBurnedR, calculateR,gotoinputscene);
+  		
   //JOGGING
   		VBox joggingContainer = new VBox();
   		
@@ -137,8 +151,7 @@ public class FitnessForYouController {
   		Button calculateJ = new Button("Calculate Calories Burned");
   		calculateJ.setOnAction(e-> calculateCaloriesJ(joggingScene, joggingDurationTextField, weightTextfield, caloriesBurnedJ));
   		joggingContainer.getChildren().addAll(caloriesBurnedJ, calculateJ,gotoinputscene);
-
-  		
+  	
   //WALKING
   		VBox walkingContainer = new VBox();
   		
@@ -162,7 +175,7 @@ public class FitnessForYouController {
   		calculateW.setOnAction(e->calculateCaloriesW(walkingScene, walkingDurationTextField, weightTextfield, caloriesBurnedW));
   		
   		walkingContainer.getChildren().addAll(caloriesBurnedW, calculateW,gotoinputscene);
-
+  		
   		
   //MARZIAS SCENE
   		//https://jenkov.com/tutorials/javafx/choicebox.html
@@ -256,7 +269,7 @@ public class FitnessForYouController {
   //}
   // this method will calculate the calories burned running using the calculate class
   double totalCaloriesBurnedR = 0.0;
-  void calculateCaloriesR (Scene runningScene, TextField runningDurationTextField, TextField weightTextField, Label caloriesBurnedR) {
+ void calculateCaloriesR (Scene runningScene, TextField runningDurationTextField, TextField weightTextField, Label caloriesBurnedR) {
   	//need to add a get value for the weight
   	int METR = 8;
   	double bodyWeightR = 0.0;
@@ -274,7 +287,7 @@ public class FitnessForYouController {
   	totalCaloriesBurnedR = caloriesR.getCalorieCalc();
   	//updatelabel
   	caloriesBurnedR.setText(String.format("Calories Burned: "+totalCaloriesBurnedR));
-
+  	
   }
 
   //JOGGING 
@@ -323,6 +336,7 @@ public class FitnessForYouController {
   	totalCaloriesBurnedJ += caloriesJ.getCalorieCalc();
   	//updatelabel
   	caloriesBurnedJ.setText(String.format("Calories Burned: "+totalCaloriesBurnedJ));
+ 	
 
   }	
 
@@ -352,7 +366,7 @@ public class FitnessForYouController {
   	//applicationStage.setScene(walkingScene);
   //}
   double totalCaloriesBurnedW = 0.0;
-   void calculateCaloriesW (Scene walkingScene, TextField walkingDurationTextField, TextField weightTextfield, Label caloriesBurnedW) {
+   void calculateCaloriesW(Scene walkingScene, TextField walkingDurationTextField, TextField weightTextfield, Label caloriesBurnedW) {
   	//need to add a get value for the weight
   	int METW = 4;
   	double bodyWeightW = 0.0;
@@ -376,15 +390,26 @@ public class FitnessForYouController {
   	//maybe add method in CountW class that can asses which day of the week (getDayOfWeek)
   	//updatelabel
   	caloriesBurnedW.setText(String.format("Calories Burned: "+totalCaloriesBurnedW));
-  	
+  
   	}
-
+	
+ 	
   }
    
   double totalCaloriesMonday = 0.0;
+  double totalCaloriesTuesday = 0.0;
+  double totalCaloriesWednesday = 0.0;
+  double totalCaloriesThursday = 0.0;
+  double totalCaloriesFriday = 0.0;
+  double totalCaloriesSaturday = 0.0;
+  double totalCaloriesSunday = 0.0;
   void calorieDayOfWeek (Scene mainScene) {
   	//https://jenkov.com/tutorials/javafx/choicebox.html
   			String dayOfTheWeek = (String) weekExerciseChoiceBox.getValue();
+  			
+  		    
+  		    	    
+  		    
   			
   			if(dayOfTheWeek == "Monday") {
   				
@@ -393,11 +418,13 @@ public class FitnessForYouController {
   				 totalCaloriesMonday += totalCaloriesBurnedR;
   				 mondaycaloriesburned = totalCaloriesMonday;
   			}
+  			
   			if(dayOfTheWeek == "Tuesday") {
   				
- 				 totalCaloriesMonday += totalCaloriesBurnedW;
- 				 totalCaloriesMonday += totalCaloriesBurnedJ;
- 				 totalCaloriesMonday += totalCaloriesBurnedR;
+ 				 totalCaloriesTuesday += totalCaloriesBurnedW;
+ 				 totalCaloriesTuesday += totalCaloriesBurnedJ;
+ 				 totalCaloriesTuesday += totalCaloriesBurnedR;
+ 				 tuesdaycaloriesburned = totalCaloriesTuesday;
  				 
  			}
   			if(dayOfTheWeek == "Wednesday") {
@@ -405,33 +432,36 @@ public class FitnessForYouController {
  				 totalCaloriesMonday += totalCaloriesBurnedW;
  				 totalCaloriesMonday += totalCaloriesBurnedJ;
  				 totalCaloriesMonday += totalCaloriesBurnedR;
+ 				 wednesdaycaloriesburned = totalCaloriesWednesday;
  				 
  			}
   			if(dayOfTheWeek == "Thursday") {
   				
- 				 totalCaloriesMonday += totalCaloriesBurnedW;
- 				 totalCaloriesMonday += totalCaloriesBurnedJ;
- 				 totalCaloriesMonday += totalCaloriesBurnedR;
- 				 
+ 				 totalCaloriesThursday += totalCaloriesBurnedW;
+ 				 totalCaloriesThursday += totalCaloriesBurnedJ;
+ 				 totalCaloriesThursday += totalCaloriesBurnedR;
+ 				 thursdaycaloriesburned = totalCaloriesThursday;
  			}
   			if(dayOfTheWeek == "Friday") {
   				
- 				 totalCaloriesMonday += totalCaloriesBurnedW;
- 				 totalCaloriesMonday += totalCaloriesBurnedJ;
- 				 totalCaloriesMonday += totalCaloriesBurnedR;
+ 				 totalCaloriesFriday += totalCaloriesBurnedW;
+ 				 totalCaloriesFriday += totalCaloriesBurnedJ;
+ 				 totalCaloriesFriday += totalCaloriesBurnedR;
+ 				 fridaycaloriesburned = totalCaloriesFriday;
  				 
  			}if(dayOfTheWeek == "Saturday") {
   				
- 				 totalCaloriesMonday += totalCaloriesBurnedW;
- 				 totalCaloriesMonday += totalCaloriesBurnedJ;
- 				 totalCaloriesMonday += totalCaloriesBurnedR;
+ 				 totalCaloriesSaturday += totalCaloriesBurnedW;
+ 				 totalCaloriesSaturday += totalCaloriesBurnedJ;
+ 				 totalCaloriesSaturday += totalCaloriesBurnedR;
+ 				 saturdaycaloriesburned = totalCaloriesSaturday;
  				 
  			}if(dayOfTheWeek == "Sunday") {
   				
- 				 totalCaloriesMonday += totalCaloriesBurnedW;
- 				 totalCaloriesMonday += totalCaloriesBurnedJ;
- 				 totalCaloriesMonday += totalCaloriesBurnedR;
- 				 
+ 				 totalCaloriesSunday += totalCaloriesBurnedW;
+ 				 totalCaloriesSunday += totalCaloriesBurnedJ;
+ 				 totalCaloriesSunday += totalCaloriesBurnedR;
+ 				 sundaycaloriesburned = totalCaloriesSunday;
  			}
   			
   }

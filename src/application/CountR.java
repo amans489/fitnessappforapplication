@@ -2,16 +2,17 @@ package application;
 
 public class CountR {
 
-double weight;
-int METenergy;
-double distance;
+double weightR;
+int METenergyR;
+double durationR;
 
 
 
  CountR(int energy, double run, double pounds){
-	 METenergy = energy;
-	 weight = pounds;
-	 distance = run;
+	
+	 METenergyR = energy;
+	 weightR = pounds;
+	 durationR = run;
  }
 
  
@@ -21,7 +22,7 @@ double distance;
  //return caloriesBurned;
  
  double getCalorieCalc() {
-return (METenergy*weight*distance)/200;
+return (METenergyR*weightR*durationR)/200;
  }
  
  }

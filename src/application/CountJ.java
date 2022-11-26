@@ -1,27 +1,27 @@
 package application;
 
 public class CountJ {
+	
+	double weightJ;
+	int METenergyJ;
+	double durationJ;
 
-double weight;
-int METenergy;
-double distance;
 
 
+	 CountJ(int energy, double jog, double pounds){
+		 METenergyJ = energy;
+		 weightJ = pounds;
+		 durationJ = jog;
+	 }
 
- CountJ(int energy, double run, double pounds){
-	 METenergy = energy;
-	 weight = pounds;
-	 distance = run;
- }
+	 
+	// public double calorieCalc (int MET, double distanceRan, double bodyW) {
 
- 
-// public double calorieCalc (int MET, double distanceRan, double bodyW) {
+	// double caloriesBurned = (MET*distanceRan*bodyW)/200;
+	 //return caloriesBurned;
+	 
+	 double getCalorieCalc() {
+	return (METenergyJ*weightJ*durationJ)/200;
+	 }
 
-// double caloriesBurned = (MET*distanceRan*bodyW)/200;
- //return caloriesBurned;
- 
- double getCalorieCalc() {
-return (METenergy*weight*distance)/200;
- }
- 
- }
+}
