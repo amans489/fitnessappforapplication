@@ -90,9 +90,9 @@ public class FitnessForYouController {
 
     @FXML
     void caloriesBurntDisplay(ActionEvent event) {
-    	
+    
     	  Scene mainScene = applicationStage.getScene();
-
+    	  
     	Scene caloriesBurntScene = new Scene(new Label("Placeholder"));
     	applicationStage.setScene(caloriesBurntScene);
     }
@@ -106,8 +106,7 @@ public class FitnessForYouController {
     @FXML
     void userInfo(ActionEvent event){
     	Scene mainScene = applicationStage.getScene();
-    	Button backToMainScene = new Button("Back");
-        backToMainScene.setOnAction(e->applicationStage.setScene(mainScene));
+    	
   //RUNNING SCENE 		
     	
   		VBox runningContainer = new VBox();
@@ -225,7 +224,7 @@ public class FitnessForYouController {
   		
   		HBox weightBox = new HBox(7);
   		weightBox.getChildren().addAll(weightLabel,weightTextfield);
-  		backToMainScene = new Button("Back");
+  		Button backToMainScene = new Button("Back");
         backToMainScene.setOnAction(e->applicationStage.setScene(mainScene));
   		container.setPadding(new Insets(0,5,0,5));
   		container.getChildren().addAll(dayOfWorkout,typeOfWorkout, walkingButton, joggingButton,
@@ -297,7 +296,6 @@ public class FitnessForYouController {
   	totalCaloriesBurnedR = caloriesR.getCalorieCalc();
   	//updatelabel
   	caloriesBurnedR.setText(String.format("Calories Burned: "+totalCaloriesBurnedR));
-  	applicationStage.setScene(mainScene);
   	
   }
 
@@ -347,7 +345,6 @@ public class FitnessForYouController {
   	totalCaloriesBurnedJ += caloriesJ.getCalorieCalc();
   	//updatelabel
   	caloriesBurnedJ.setText(String.format("Calories Burned: "+totalCaloriesBurnedJ));
-  	applicationStage.setScene(mainscene);
  	
 
   }	
@@ -402,7 +399,6 @@ public class FitnessForYouController {
   	//maybe add method in CountW class that can asses which day of the week (getDayOfWeek)
   	//updatelabel
   	caloriesBurnedW.setText(String.format("Calories Burned: "+totalCaloriesBurnedW));
-  	applicationStage.setScene(mainScene);
   
   	}
 	

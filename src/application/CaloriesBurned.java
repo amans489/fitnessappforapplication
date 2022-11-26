@@ -37,18 +37,22 @@ public class CaloriesBurned extends Application {
             XYChart.Series caloriesBurned = new XYChart.Series();
            caloriesBurned.setName("CaloriesBurned");       
             caloriesBurned.getData().add(new XYChart.Data(monday, calorieDayOfWeek()));
-           caloriesBurned.getData().add(new XYChart.Data(tuesday,calorieDayOfWeek));
-           caloriesBurned.getData().add(new XYChart.Data(wednesday,5000));
-           caloriesBurned.getData().add(new XYChart.Data(thursday, 7000));
-            caloriesBurned.getData().add(new XYChart.Data(friday,1000));
-            caloriesBurned.getData().add(new XYChart.Data(saturday, 20000));      
+           caloriesBurned.getData().add(new XYChart.Data(tuesday,calorieDayOfWeek()));
+           caloriesBurned.getData().add(new XYChart.Data(wednesday,calorieDayOfWeek()));
+           caloriesBurned.getData().add(new XYChart.Data(thursday,calorieDayOfWeek()));
+            caloriesBurned.getData().add(new XYChart.Data(friday,calorieDayOfWeek()));
+            caloriesBurned.getData().add(new XYChart.Data(saturday, calorieDayOfWeek()));      
           
             Scene scene  = new Scene(caloriesburned,800,600);
             caloriesburned.getData().addAll(caloriesBurned);
            stage.setScene(scene);
            stage.show();
         }
-        public static void main(String[] args) {
+        private Object calorieDayOfWeek() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		public static void main(String[] args) {
         	launch(args);
         }
 	 }
