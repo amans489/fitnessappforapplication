@@ -36,8 +36,8 @@ public class CaloriesBurned extends Application {
      
             XYChart.Series caloriesBurned = new XYChart.Series();
            caloriesBurned.setName("CaloriesBurned");       
-            caloriesBurned.getData().add(new XYChart.Data(monday, 2000));
-           caloriesBurned.getData().add(new XYChart.Data(tuesday,3000));
+            caloriesBurned.getData().add(new XYChart.Data(monday, calorieDayOfWeek()));
+           caloriesBurned.getData().add(new XYChart.Data(tuesday,calorieDayOfWeek));
            caloriesBurned.getData().add(new XYChart.Data(wednesday,5000));
            caloriesBurned.getData().add(new XYChart.Data(thursday, 7000));
             caloriesBurned.getData().add(new XYChart.Data(friday,1000));
