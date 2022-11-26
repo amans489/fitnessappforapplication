@@ -84,6 +84,11 @@
                   <Insets left="250.0" top="70.0" />
                </HBox.margin>
             </Button>
+                        <Button mnemonicParsing="false" onAction="#workoutTimeDisplay" text="Display Time Spent Working Out">
+               <HBox.margin>
+                  <Insets left="10.0" top="10.0"/>
+               </HBox.margin>
+            </Button>
          </children>
       </HBox>
    </children>

@@ -48,9 +48,15 @@ public class FitnessForYouController {
     void workoutDisplay(ActionEvent event) {
    
     }
+    
+    @FXML
+    void workoutTimeDisplay(){
+    	
+    }
     @FXML
     void userInfo(ActionEvent event){
-        
+        Scene mainScene = applicationStage.getScene();
+
     	
         //https://jenkov.com/tutorials/javafx/choicebox.html
         String dayOfWeek = (String) weekExerciseChoiceBox.getValue();
@@ -86,9 +92,12 @@ public class FitnessForYouController {
        HBox weightBox = new HBox(7);
        weightBox.getChildren().addAll(weightLabel,weightTextfield);
        
+       Button backToMainScene = new Button("Back");
+       backToMainScene.setOnAction(e->applicationStage.setScene(mainScene));
+       
        container.setPadding(new Insets(0,5,0,5));
          container.getChildren().addAll(dayOfWorkout,typeOfWorkout, walkingButton, joggingButton,
-        		 runningButton, heightBox, weightBox);
+        		 runningButton, heightBox, weightBox, backToMainScene);
 
     }
     
@@ -138,5 +147,7 @@ int MET = 8;
   caloriesBurned.setText(String.format("Calories Burned: "+totalCaloriesBurned));
    
     }
+    
+
 
 }
