@@ -7,7 +7,9 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
-
+// used the below site to get bar chart but changed the detail of the code
+// to match the requirements of this app 
+//https://docs.oracle.com/javafx/2/charts/bar-chart.htm 
 public class CaloriesBurned extends Application {
 	
 	final static String monday = "Monday";
