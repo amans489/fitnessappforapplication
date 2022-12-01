@@ -31,7 +31,8 @@ import javafx.stage.Stage;
 
 public class FitnessForYouController {
 	Stage applicationStage;
-	
+	String heightvalues;
+	String weightvalues;
 	double [] monday = new double[3];
 	double [] tuesday = new double[3];
 	double [] wednesday = new double[3];
@@ -85,6 +86,9 @@ public class FitnessForYouController {
 	private Button runningButton;
 	@FXML 
 	private TextField weightTextField;
+	
+	@FXML
+	private Label heighterror;
 
 
 
@@ -106,6 +110,26 @@ public class FitnessForYouController {
     @FXML
     void userInfo(ActionEvent event){
     	Scene mainScene = applicationStage.getScene();
+    	VBox containingHeightandWeight = new VBox(10);
+    	
+    	Scene userHeightAndWeightScene = new Scene(containingHeightandWeight,600,400);
+    	
+    	HBox height = new HBox();
+    	
+    	Label height1 = new Label("Enter your height(cm): ");
+    	TextField heightTextField = new TextField();
+    	height.getChildren().addAll(height1,heightTextField);
+    	
+    	Label weight1 = new Label("Enter your weight(kg): ");
+    	TextField weightTextField = new TextField();
+    	
+    	HBox weight = new HBox();
+    	weight.getChildren().addAll(weight1,weightTextField);
+    	
+    	Button done = new Button("Go back to User Info Scene");
+    	
+    	
+    	
     	
   //RUNNING SCENE 		
     	
@@ -198,6 +222,39 @@ public class FitnessForYouController {
   		applicationStage.setTitle("Enter User Information");
   		// ChoiceBox weekExerciseChoiceBox = new ChoiceBox();
   		//weekExerciseChoiceBox.setOnAction()
+  		heighterror = new Label("");
+  	    
+    	containingHeightandWeight.getChildren().addAll(height,weight,done,heighterror);
+  		done.setOnAction(e->{
+  			String heightvalues = heightTextField.getText();
+  	    	String weightvalues = weightTextField.getText();
+  	    	
+  	    	
+  			UserInputErrorHandling heightAndWeight = new UserInputErrorHandling(heightvalues, weightvalues);
+  			boolean noerrors;
+			try {
+  				
+  				if(heightAndWeight.check()) {
+  					noerrors = true;
+  					heighterror.setText("");
+  					double weightvalue = Double.parseDouble(weightvalues);
+  					double heightvalue = Double.parseDouble(heightvalues);
+  					applicationStage.setScene(userInfoScene);
+  				}  
+  				
+  			
+  			} catch (InvalidUserException e1) {
+  					noerrors = false;
+  					
+  					
+  						heighterror.setText(e1.getMessage());
+  					
+  						
+  					
+  					System.out.println("An error was found");
+  					
+  				} 
+  		});
   		Label dayOfWorkout = new Label("Day of the Week: " + dayOfWeek);
   		Label typeOfWorkout = new Label("Choose a Type of Workout: ");
   		
@@ -216,19 +273,22 @@ public class FitnessForYouController {
   		
   		//TextField weightTextfield = new TextField();
   		TextField heightTextfield = new TextField();
-
-  		Label heightLabel = new Label("Enter Height:  ");
-  		Label weightLabel = new Label("Enter Weight: ");
-  		HBox heightBox = new HBox(7);
-  		heightBox.getChildren().addAll(heightLabel,heightTextfield);
+  		Button enterUserInput = new Button("Enter your height and weight ");
+  		enterUserInput.setOnAction(e->applicationStage.setScene(userHeightAndWeightScene));
   		
-  		HBox weightBox = new HBox(7);
-  		weightBox.getChildren().addAll(weightLabel,weightTextfield);
+  		
+  		
+  		HBox heightBox = new HBox(7);
+  		heightBox.getChildren().addAll(enterUserInput);
+  		
+  		
+  		
+  		
   		Button backToMainScene = new Button("Back");
         backToMainScene.setOnAction(e->applicationStage.setScene(mainScene));
   		container.setPadding(new Insets(0,5,0,5));
   		container.getChildren().addAll(dayOfWorkout,typeOfWorkout, walkingButton, joggingButton,
-  				runningButton, heightBox, weightBox,backToMainScene);
+  				runningButton, heightBox,backToMainScene);
   		
   		
   		
