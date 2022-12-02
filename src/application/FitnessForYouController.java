@@ -277,6 +277,7 @@ public class FitnessForYouController {
   	//applicationStage.setScene(runningScene);
   //}
   // this method will calculate the calories burned running using the calculate class
+    //move this to the top
   double totalCaloriesBurnedR = 0.0;
  void calculateCaloriesR (Scene mainScene, Scene runningScene, TextField runningDurationTextField, TextField weightTextField, Label caloriesBurnedR) {
   	//need to add a get value for the weight
@@ -383,7 +384,7 @@ public class FitnessForYouController {
   	
   	String DurationW= walkingDurationTextField.getText();
   	if(DurationW != null) {
-  		System.out.println("textfield"+ walkingDurationTextField.getText());
+  		System.out.println("textfield for total calories burned "+ walkingDurationTextField.getText());
   		Double durationWalk = Double.parseDouble(DurationW);
   	
   	
@@ -438,9 +439,9 @@ public class FitnessForYouController {
  			}
   			if(dayOfTheWeek == "Wednesday") {
   				
- 				 totalCaloriesMonday += totalCaloriesBurnedW;
- 				 totalCaloriesMonday += totalCaloriesBurnedJ;
- 				 totalCaloriesMonday += totalCaloriesBurnedR;
+ 				 totalCaloriesWednesday += totalCaloriesBurnedW;
+ 				 totalCaloriesWednesday += totalCaloriesBurnedJ;
+ 				 totalCaloriesWednesday += totalCaloriesBurnedR;
  				 wednesdaycaloriesburned = totalCaloriesWednesday;
  				 
  			}
