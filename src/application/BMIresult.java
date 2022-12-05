@@ -1,7 +1,7 @@
 package application;
 
 public interface BMIresult {
-	public String bmitype(bmiresult) {
+	public String bmitype(bmiresults) {
 	String type;
 	if (bmi < 15)  {
 		type = "very severely underweight";
