@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.collections.FXCollections?>
 
-<VBox prefHeight="416.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FitnessForYouController">
+<VBox prefHeight="460.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FitnessForYouController">
    <children>
       <Label prefHeight="63.0" prefWidth="194.0" text="fitness for you" textOverrun="LEADING_WORD_ELLIPSIS">
          <VBox.margin>
@@ -63,28 +63,50 @@
             </ChoiceBox>
          </children>
       </HBox>
-      <HBox prefHeight="146.0" prefWidth="586.0">
+      <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#caloriesBurntDisplay" text="Display Calories Burned during a week">
+            <Label fx:id="heightLabel" text="Height">
                <HBox.margin>
-                  <Insets left="190.0" top="50.0" />
+                  <Insets left="30.0" />
                </HBox.margin>
-            </Button>
+            </Label>
+            <TextField fx:id="heightTextField" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#workoutDisplay" text="Display Workout">
+            <HBox prefHeight="59.0" prefWidth="586.0">
+               <children>
+                  <Label fx:id="weightLabel" prefHeight="17.0" prefWidth="392.0" text="Weight">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="weightTextField" prefHeight="25.0" prefWidth="203.0" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="73.0" prefWidth="586.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#userInfo" text="Button" />
+            <Button mnemonicParsing="false" onAction="#calculateBMI" prefHeight="25.0" prefWidth="164.0" text="Calculate BMI">
                <HBox.margin>
-                  <Insets left="250.0" top="70.0" />
+                  <Insets left="120.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="141.0" text="Recipe Calorie Count">
+               <HBox.margin>
+                  <Insets left="120.0" />
                </HBox.margin>
             </Button>
          </children>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Button mnemonicParsing="false" onAction="#userInfo" text="User Input" />
-         </children>
-      </HBox>
+       <Label fx:id="heightErrorLabel" prefHeight="17.0" prefWidth="463.0" textFill="RED">
+                     <VBox.margin>
+                        <Insets left="30.0" />
+                     </VBox.margin></Label>
+      <Label fx:id="bmiLabel" prefHeight="17.0" prefWidth="303.0" text="fdggsf" />
+
    </children>
 </VBox>
