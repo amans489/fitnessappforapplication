@@ -284,44 +284,52 @@ public class FitnessForYouController {
 		joggingErrorLabel.setText("gfdh");
 		joggingContainer.getChildren().addAll(durationJ,joggingLabel,joggingDurationTextField,caloriesBurnedJ,calculateJ,backToMainScene,joggingErrorLabel);
 		boolean noerrors;
-		calculateJ.setOnAction(e->calculateCaloriesW(joggingDurationTextField, weightValue, caloriesBurnedJ,joggingErrorLabel));	
+		calculateJ.setOnAction(e->calculateCaloriesJ(joggingDurationTextField, weightValue, caloriesBurnedJ,joggingErrorLabel));	
 	}
 
+
+
+
+	private Object calculateCaloriesJ(TextField joggingDurationTextField, double weightValue2, Label caloriesBurnedJ,
+			Label joggingErrorLabel2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 	@FXML
 	void running() {
 
 
-		VBox joggingContainer = new VBox();
+		VBox runningContainer = new VBox();
 		Scene mainScene = applicationStage.getScene();
 
-		Scene joggingScene = new Scene(joggingContainer,600,400);
-		applicationStage.setScene(joggingScene);
-		applicationStage.setTitle("calories burned for jogging");
+		Scene runningScene = new Scene(runningContainer,600,400);
+		applicationStage.setScene(runningScene);
+		applicationStage.setTitle("calories burned for running");
 		// text box with its label in a h box  
 		System.out.println("sdkgjdfg");
 
-		HBox durationJ = new HBox();
-		Label joggingLabel = new Label("Time spent jogging");
+		HBox durationR = new HBox();
+		Label runningLabel = new Label("Time spent running");
 
-		TextField joggingDurationTextField = new TextField();
+		TextField runningDurationTextField = new TextField();
 
 		//  		// adding label and text box to H box                 
-		durationJ.getChildren().addAll(joggingLabel, joggingDurationTextField);
+		durationR.getChildren().addAll(runningLabel, runningDurationTextField);
 		//  		// adding the H box to the V box                      
 
 
-		Label caloriesBurnedJ = new Label("Calories Burned: ");
+		Label caloriesBurnedR = new Label("Calories Burned: ");
 
-		Button calculateJ = new Button("Calculate Calories Burned");
+		Button calculateR = new Button("Calculate Calories Burned");
 		Button backToMainScene = new Button("Back");
-		Label joggingErrorLabel = new Label("Time error");
+		Label runningErrorLabel = new Label("Time error");
 		backToMainScene.setOnAction(e->applicationStage.setScene(mainScene));
 		joggingErrorLabel.setText("gfdh");
-		joggingContainer.getChildren().addAll(durationJ,joggingLabel,joggingDurationTextField,caloriesBurnedJ,calculateJ,backToMainScene,joggingErrorLabel);
+		runningContainer.getChildren().addAll(durationR,runningLabel,runningDurationTextField,caloriesBurnedR,calculateR,backToMainScene,runningErrorLabel);
 		boolean noerrors;
-		calculateJ.setOnAction(e->calculateCaloriesW(joggingDurationTextField, weightValue, caloriesBurnedJ,joggingErrorLabel));	
+		calculateR.setOnAction(e->calculateCaloriesR(runningDurationTextField, weightValue, caloriesBurnedR, runningErrorLabel));	
 	}
 
 
@@ -330,6 +338,13 @@ public class FitnessForYouController {
 
 
 
+
+
+	private Object calculateCaloriesR(TextField runningDurationTextField, double weightValue2, Label caloriesBurnedR,
+			Label joggingErrorLabel2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 	void calculateCaloriesW(TextField walkingDurationTextField, double weightvalue, Label caloriesBurnedW,Label walkingErrorLabel) {
@@ -341,6 +356,7 @@ public class FitnessForYouController {
 		String DurationW= walkingDurationTextField.getText();
 
 
+		
 
 		TimeInputErrorHandling duration = new TimeInputErrorHandling(DurationW);
 		boolean noerrors;
