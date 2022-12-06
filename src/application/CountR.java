@@ -1,28 +1,16 @@
 package application;
 
-public class CountR {
-
-double weightR;
-int METenergyR;
-double durationR;
+public class CountR extends Exercise {
 
 
 
- CountR(int energy, double run, double pounds){
-	
-	 METenergyR = energy;
-	 weightR = pounds;
-	 durationR = run;
- }
+private int METenergyJ = 4;
+	CountR(int energy, double jog, double pounds) {
+	super(energy, jog, pounds);
+	// TODO Auto-generated constructor stub
+}
 
- 
-// public double calorieCalc (int MET, double distanceRan, double bodyW) {
 
-// double caloriesBurned = (MET*distanceRan*bodyW)/200;
- //return caloriesBurned;
- 
- double getCalorieCalc() {
-return (METenergyR*weightR*durationR)/200;
- }
+
  
  }

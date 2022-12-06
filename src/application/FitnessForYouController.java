@@ -89,35 +89,35 @@ public class FitnessForYouController {
   		};
   		
   		
-  		@FXML
-  		final double errorchecking() {
-  			String heightvalues = heightTextField.getText();
-  			String weightvalues = weightTextField.getText();
-  			UserInputErrorHandling heightAndWeight = new UserInputErrorHandling(heightvalues, weightvalues);
-  			boolean noerrors;
-			try {
-  				
-  				if(heightAndWeight.check()) {
-  					noerrors = true;
-  					heightErrorLabel.setText("");
-  					heightofuser = heightAndWeight.heightofuser;
-  					weightofuser = heightAndWeight.weightofuser;
-  				
-  				}  
-  				
-  			
-  			} catch (InvalidUserException e1) {
-  					noerrors = false;
-  					heightErrorLabel.setText(e1.getMessage());
-  					
-  					System.out.println("An error was found");
-  						
-  	
-  					
-  				}
-			
-  		};
-  			
+//  		@FXML
+//  		final double errorchecking() {
+//  			String heightvalues = heightTextField.getText();
+//  			String weightvalues = weightTextField.getText();
+//  			UserInputErrorHandling heightAndWeight = new UserInputErrorHandling(heightvalues, weightvalues);
+//  			boolean noerrors;
+//			try {
+//  				
+//  				if(heightAndWeight.check()) {
+//  					noerrors = true;
+//  					heightErrorLabel.setText("");
+//  					heightofuser = heightAndWeight.heightofuser;
+//  					weightofuser = heightAndWeight.weightofuser;
+//  				
+//  				}  
+//  				
+//  			
+//  			} catch (InvalidUserException e1) {
+//  					noerrors = false;
+//  					heightErrorLabel.setText(e1.getMessage());
+//  					
+//  					System.out.println("An error was found");
+//  						
+//  	
+//  					
+//  				}
+//			
+//  		};
+//  			
   		
 
 	
