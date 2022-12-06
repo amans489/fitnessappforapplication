@@ -203,6 +203,8 @@ void goToMainScene(ActionEvent event) {
   		//walkingButton.setOnAction(new CountW);
   		
   		Button joggingButton = new Button("Jogging");
+  		walkingButton.setOnAction(e-> jogging());
+  		
 //  		joggingButton.setOnAction(new CountJ);
 //  		joggingButton.setOnAction(e-> applicationStage.setScene(joggingScene));
   		Button runningButton = new Button("Running");
@@ -256,24 +258,44 @@ void goToMainScene(ActionEvent event) {
   		calculateW.setOnAction(e->calculateCaloriesW(walkingDurationTextField, weightvalue, caloriesBurnedW,walkingErrorLabel));	
  }
 			
-	    	
-	    	
-  			
-		
+ @FXML
+ void jogging() {
+	
+  		
+	VBox joggingContainer = new VBox();
+	Scene mainScene = applicationStage.getScene();
+	
+  		Scene joggingScene = new Scene(joggingContainer,600,400);
+  		applicationStage.setScene(joggingScene);
+  		applicationStage.setTitle("calories burned for jogging");
+  		// text box with its label in a h box  
+  		System.out.println("sdkgjdfg");
+  		
+ 		HBox durationJ = new HBox();
+  		Label joggingLabel = new Label("Time spent jogging");
+  		
+  		TextField joggingDurationTextField = new TextField();
+  		
+//  		// adding label and text box to H box                 
+ 		durationJ.getChildren().addAll(joggingLabel, joggingDurationTextField);
+//  		// adding the H box to the V box                      
+  		
 
-    	
-        // assuming that project is worth 50% towards the course grade
-    	
+  		Label caloriesBurnedJ = new Label("Calories Burned: ");
+  		
+  		Button calculateJ = new Button("Calculate Calories Burned");
+  		Button backToMainScene = new Button("Back");
+  		Label joggingErrorLabel = new Label("Time error");
+        backToMainScene.setOnAction(e->applicationStage.setScene(mainScene));
+        joggingErrorLabel.setText("gfdh");
+  		joggingContainer.getChildren().addAll(durationJ,joggingLabel,joggingDurationTextField,caloriesBurnedJ,calculateJ,backToMainScene,joggingErrorLabel);
+  		boolean noerrors;
+  		calculateJ.setOnAction(e->calculateCaloriesW(joggingDurationTextField, weightvalue, caloriesBurnedJ,joggingErrorLabel));	
+ }
 		
  
   		
 
-
-   
-
-	
-
-  		
   		
   		
 
