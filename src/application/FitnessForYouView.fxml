@@ -95,11 +95,6 @@
                   <Insets left="120.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="141.0" text="Recipe Calorie Count">
-               <HBox.margin>
-                  <Insets left="120.0" />
-               </HBox.margin>
-            </Button>
          </children>
       </HBox>
        <Label fx:id="heightErrorLabel" prefHeight="17.0" prefWidth="463.0" textFill="RED">

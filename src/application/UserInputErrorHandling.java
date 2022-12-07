@@ -17,6 +17,14 @@
 			
 					}	
 		
+		public boolean check2(String heightAndWeight)
+		{
+			boolean b = true;
+			if (heightAndWeight == null || heightAndWeight == "")
+				b = false;
+			return b;
+		}
+		
 		public boolean check () throws InvalidUserException
 		{
 			boolean b = true;
@@ -47,12 +55,14 @@
 	        				"Weight should be a number. ");
 	    		}	
 			
-
+	    		if (check2(height)) {
 	        	double height = Double.parseDouble(this.height);
 	        	if (height < 0 || height > 213.36 ) {
 	        		b = false;
 	        		throw new InvalidUserException("Height should be between 0 & 213.36" + "." + " " + 
 	        					"Invalid Height: " + this.height);			
+	        	} } else {
+	        		throw new InvalidUserException("Height textfield is null");
 	        	}
 				
 				
@@ -69,13 +79,17 @@
 				}
 				}
 					
-					
+				if (check2(weight)) {
 		        	double weight = Double.parseDouble(this.weight);
 		        	
 		        	if (weight < 0 || weight > 727 ) {
 		        		b = false;
 		        		throw new InvalidUserException("Weight should be between 0 & 727" + "." + " " + 
 		        					"Invalid Weight: " + this.weight);	}
+				}
+				else {
+					throw new InvalidUserException("Weight textfield is null");
+				}
 		        	
 				return b;
 		}

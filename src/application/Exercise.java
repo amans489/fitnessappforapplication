@@ -1,14 +1,14 @@
 package application;
 
-public class Exercise {
+public abstract class Exercise {
 	double weight;
-	int METenergy;
+	
 	double duration;
 
 
 
-	 Exercise(int energy, double jog, double pounds){
-		 METenergy = energy;
+	 Exercise(double jog, double pounds){
+		 
 		 weight = pounds;
 		 duration = jog;
 	 }
@@ -19,8 +19,6 @@ public class Exercise {
 	// double caloriesBurned = (MET*distanceRan*bodyW)/200;
 	 //return caloriesBurned;
 	 
-	 double getCalorieCalc() {
-	return (METenergy*weight*duration)/200;
-	 }
+	 abstract double getCalorieCalc();
 }
 
