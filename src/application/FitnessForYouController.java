@@ -28,7 +28,9 @@ public class FitnessForYouController {
 	String weightvalues;
 	boolean noerrors;
 	TimeInputErrorHandling time;
-	
+	double caloriesBurnedforWalking;
+	boolean userInfoChecking;
+	UserInputErrorHandling heightAndWeight;
     @FXML
     private Label weightLabel;
     
@@ -81,34 +83,77 @@ public class FitnessForYouController {
 	return noerrors;
 	
 	}*/
+   
+    @FXML
+    String height() {
+		heightvalues = heightTextField.getText();
+		return heightvalues;
+    	
+    }
     
+    @FXML
+    String weight() {
+    	weightvalues = weightTextField.getText();
+    	return weightvalues;
+    }
+    
+//    @FXML
+//    public userInfoValidation(heightvalues,weightvalues) throws InvalidUserExceptions {
+    	
+    	
 
    @FXML
     void userInfo(ActionEvent event) {
-	  
-  			String heightvalues = heightTextField.getText();
-  	    	String weightvalues = weightTextField.getText();
-  	    	
-  	    	
-  			UserInputErrorHandling heightAndWeight = new UserInputErrorHandling(heightvalues, weightvalues);
-  			boolean noerrors;
-			
-  				
-  				if(heightAndWeight.check2(heightvalues) && heightAndWeight.check2(weightvalues))
-  						{
-  					noerrors = true;
-  					heightErrorLabel.setText("");
-  					if (heightvalues != null && weightvalues != null) {
-  					weightvalue = Double.parseDouble(weightvalues);
-  					heightvalue = Double.parseDouble(heightvalues);
-  				
-  					determinetypeofexercise(event);} 
-  					else {
-  						heightErrorLabel.setText("Height and Weight shouldn't be null");
-  					}
-  				}
+	    	heightErrorLabel.setText("");
+  			String heightvalues = height();
+  	    	String weightvalues = weight();
+  	    	userInfoValidation(heightvalues,weightvalues);
    }
-  		
+//  	    	
+//  	    	
+//  			UserInputErrorHandling heightAndWeight = new UserInputErrorHandling(heightvalues, weightvalues);
+//  			boolean noerrors;
+////			
+//  				
+//  				
+//  						
+////  					noerrors = true;
+//	   				try {
+//	   					try {
+//							if(heightAndWeight.check2(heightvalues) && heightAndWeight.check2(weightvalues) && heightAndWeight.check()) {
+//							
+//	   						noerrors = true;
+//							heightErrorLabel.setText("");
+//							
+//							weightvalue = Double.parseDouble(weightvalues);
+//							heightvalue = Double.parseDouble(heightvalues);
+//
+//							determinetypeofexercise(event);} 
+//							else {
+//								heightErrorLabel.setText("Height and Weight shouldn't be null");
+//							}
+//		 
+//							
+//		
+//						} catch (NumberFormatException e) {
+//							// 
+//							
+//						} catch (InvalidUserException e) {
+//							
+//								heightErrorLabel.setText(e.getMessage());
+//								System.out.println("Hello");
+//						} finally {
+//							
+//						} 
+//						}
+//	   				finally {
+//	   					
+//	   				}
+//	   				}  
+//	   					
+	   				
+	   				
+	    
   		
 //  		@FXML
 //  		final double errorchecking() {
@@ -142,7 +187,25 @@ public class FitnessForYouController {
   		
 
 	
-  		@FXML
+  		private void userInfoValidation(String heightvalues2, String weightvalues2) {
+  			UserInputErrorHandling heightAndWeight = new UserInputErrorHandling(heightvalues,weightvalues);
+  	    	try {
+  				if(heightAndWeight.check2(heightvalues) && heightAndWeight.check2(weightvalues) && heightAndWeight.check()) {
+  					noerrors = true; 
+  					heightErrorLabel.setText("");
+  					determinetypeofexercise(null);
+  				} else {
+  					noerrors = false;
+  				}
+  			} catch (InvalidUserException e) {
+  				heightErrorLabel.setText(e.getMessage());
+  			}
+  	    	
+  	    }
+	
+
+
+		@FXML
   		void displayBMIresult(double bmiresulttodisplay) {
   
   			bmiLabel.setText("Your bmi is: " +bmiresulttodisplay );
@@ -320,11 +383,19 @@ void goToMainScene(ActionEvent event) {
 	
 
   		
-  		
+ private double caloriesBurntCalculation(CountW caloriesWalking) {
+		return (totalCaloriesBurnedW += caloriesWalking.getCalorieCalc());
+		
+	}  		
   		
 
-
- 
+//boolean timeVerification() {
+//	TimeInputErrorHandling duration = new TimeInputErrorHandling(DurationW);
+//	boolean noerrors;
+//	try { 
+//		if (duration,
+//	}
+//}
 
  
  void calculateCaloriesW(TextField walkingDurationTextField, double weightvalue, Label caloriesBurnedW,Label walkingErrorLabel) {
@@ -353,12 +424,13 @@ void goToMainScene(ActionEvent event) {
 				CountW caloriesW = new CountW(timing, bodyWeightW);
 				
 				//calories will be caluclated in the Countr class using the getCalorieCalc method
-
-				totalCaloriesBurnedW += caloriesW.getCalorieCalc();
+				caloriesBurnedforWalking = caloriesBurntCalculation(caloriesW);
+				//totalCaloriesBurnedW += caloriesW.getCalorieCalc();
 				
 				//maybe add method in CountW class that can asses which day of the week (getDayOfWeek)
 				//updatelabel
-				caloriesBurnedW.setText(String.format("Calories Burned: "+totalCaloriesBurnedW));
+				displayCaloriesResult(caloriesBurnedforWalking,caloriesBurnedW);
+//				caloriesBurnedW.setText(String.format("Calories Burned: "+totalCaloriesBurnedW));
 
 				}
 				
@@ -376,6 +448,11 @@ void goToMainScene(ActionEvent event) {
 				
 			} 
 	}
+
+private void displayCaloriesResult(double caloriesBurnedforWalking2, Label caloriesBurnedW) {
+	caloriesBurnedW.setText(String.format("Calories Burned: "+caloriesBurnedforWalking2));
+	
+}
 
 		
 

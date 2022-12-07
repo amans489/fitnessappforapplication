@@ -40,7 +40,7 @@
 						
 				
 					}if (g == '.') {
-						period_count_for_weight += 1;
+						period_count_for_height += 1;
 		    			
 				}
 				
@@ -49,10 +49,6 @@
 					b = false;
 	        		throw new InvalidUserException("Don't include the multiple periods: " + "." + "." + " " +
 	        				"Height should be a number. ");
-	    		}	if (period_count_for_weight > 1) {
-	    			b = false;
-	        		throw new InvalidUserException("Don't include the multiple periods: " + "." + "." + " " +
-	        				"Weight should be a number. ");
 	    		}	
 			
 	    		if (check2(height)) {
@@ -78,6 +74,11 @@
 		    			
 				}
 				}
+				if (period_count_for_weight > 1) {
+	    			b = false;
+	        		throw new InvalidUserException("Don't include the multiple periods: " + "." + "." + " " +
+	        				"Weight should be a number. ");
+	    		}	
 					
 				if (check2(weight)) {
 		        	double weight = Double.parseDouble(this.weight);
