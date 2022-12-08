@@ -13,6 +13,13 @@ package application;
 			
 			
 					}	
+		public boolean check2(String duration)
+		{
+			boolean b = true;
+			if (duration == null ||duration == "")
+				b = false;
+			return b;
+		}
 		
 		public boolean check () throws InvalidUserException
 		{
@@ -43,15 +50,17 @@ package application;
 	        				"Time should be a number. ");
 	    		}	
 
+	    		if (check2(time)) {
 	        	double time = Double.parseDouble(this.time);
 	        	if (time < 0 || time > 1440 ) {
 	        		b = false;
 	        		throw new InvalidUserException("Time should be between 0 & 1440" + "." + " " + 
-	        					"InvalidTime: " + this.time);			
+	        					"Invalid Time: " + this.time);			
+	        	} } else {
+	        		throw new InvalidUserException("Time textfield is null");
 	        	}
-				
-				
-			
+
+	 
 		        	
 				return b;
 		}

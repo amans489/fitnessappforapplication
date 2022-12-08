@@ -15,7 +15,7 @@ public class CountW extends Exercise {
 	@Override
 	double getCalorieCalc() {
 		// TODO Auto-generated method stub
-		return METenergyW*super.weight*super.duration/(200);
+		return (METenergyW*super.weight*super.duration)/(200);
 	}
 
 }

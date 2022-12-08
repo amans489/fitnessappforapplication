@@ -194,21 +194,35 @@ public class FitnessForYouController {
   					noerrors = true; 
   					heightErrorLabel.setText("");
   					determinetypeofexercise(null);
+  					heightvalue = heightOfUser(heightvalues);
+  					weightvalue = weightOfUser(weightvalues);
   				} else {
   					noerrors = false;
+  					heightErrorLabel.setText("Height and Weight TextFields cannot be empty");
   				}
   			} catch (InvalidUserException e) {
   				heightErrorLabel.setText(e.getMessage());
   			}
   	    	
   	    }
+  		
+  		
+  		double heightOfUser(String heightvalues) {
+  			heightvalue = Double.parseDouble(heightvalues);
+  			return heightvalue;
+  		}
+  		
+  		double weightOfUser(String weightvalues) {
+  			weightvalue = Double.parseDouble(weightvalues);
+  			return weightvalue;
+  		}
 	
 
 
 		@FXML
   		void displayBMIresult(double bmiresulttodisplay) {
   
-  			bmiLabel.setText("Your bmi is: " +bmiresulttodisplay );
+  			heightErrorLabel.setText("Your bmi is: " +bmiresulttodisplay );
   		}
   	
   		@FXML
@@ -237,7 +251,7 @@ public class FitnessForYouController {
   			
   			} catch (InvalidUserException e1) {
   					noerrors = false;
-  					bmiLabel.setText(e1.getMessage());
+  					heightErrorLabel.setText(e1.getMessage());
   					
   					System.out.println("An error was found");
   						
@@ -377,6 +391,7 @@ void goToMainScene(ActionEvent event) {
 // 
 //  		
 
+ 
 
    
 
@@ -396,7 +411,7 @@ void goToMainScene(ActionEvent event) {
 //		if (duration,
 //	}
 //}
-
+ 
  
  void calculateCaloriesW(TextField walkingDurationTextField, double weightvalue, Label caloriesBurnedW,Label walkingErrorLabel) {
 	//need to add a get value for the weight
@@ -420,18 +435,8 @@ void goToMainScene(ActionEvent event) {
 				//this invokes the class that calculates the calories burned
 				//have to add soemthing the get the bodyweight 
 				System.out.println("fjkdfgdfg" + weightvalue);
+				countingCalories(timing, bodyWeightW,caloriesBurnedW,METW);
 				
-				CountW caloriesW = new CountW(timing, bodyWeightW);
-				
-				//calories will be caluclated in the Countr class using the getCalorieCalc method
-				caloriesBurnedforWalking = caloriesBurntCalculation(caloriesW);
-				//totalCaloriesBurnedW += caloriesW.getCalorieCalc();
-				
-				//maybe add method in CountW class that can asses which day of the week (getDayOfWeek)
-				//updatelabel
-				displayCaloriesResult(caloriesBurnedforWalking,caloriesBurnedW);
-//				caloriesBurnedW.setText(String.format("Calories Burned: "+totalCaloriesBurnedW));
-
 				}
 				
 				
@@ -449,6 +454,19 @@ void goToMainScene(ActionEvent event) {
 			} 
 	}
 
+private void countingCalories(double timing, double bodyWeightW,Label caloriesBurnedW, double METW) {
+	CountW caloriesW = new CountW(timing, bodyWeightW);
+	
+	//calories will be caluclated in the Countr class using the getCalorieCalc method
+	caloriesBurnedforWalking = caloriesBurntCalculation(caloriesW);
+	//totalCaloriesBurnedW += caloriesW.getCalorieCalc();
+	
+	//maybe add method in CountW class that can asses which day of the week (getDayOfWeek)
+	//updatelabel
+	displayCaloriesResult(caloriesBurnedforWalking,caloriesBurnedW);
+//	caloriesBurnedW.setText(String.format("Calories Burned: "+totalCaloriesBurnedW));
+
+}
 private void displayCaloriesResult(double caloriesBurnedforWalking2, Label caloriesBurnedW) {
 	caloriesBurnedW.setText(String.format("Calories Burned: "+caloriesBurnedforWalking2));
 	
