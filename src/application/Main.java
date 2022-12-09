@@ -22,7 +22,7 @@ public class Main extends Application {
 			Scene scene = new Scene(root,600,400);
 			
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("Fitness App designed for you");
+			primaryStage.setTitle("Fitness Designed For You");
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();

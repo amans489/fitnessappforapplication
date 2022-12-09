@@ -1,4 +1,13 @@
 package application;
+/**This is the controller class for the FitnessForYouController
+ * This class prompts the user for height and weight, these values are used to calculate BMI directly on the main scene
+ * The user has the option to choose what day of the week they are working out on
+ * They can then click a button that will bring them to another scene that 
+ * lets them choose what type of exercise they completed
+ * It creates three scenes, and calculates the amount of calories burned based on the time 
+ * they spent working out and the type of exercise they completed
+ * @author Marzia, Alina and Kaleigh
+ */
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +22,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class FitnessForYouController {
+	/**
+	 * Data attributed to this class
+	 */
 	Stage applicationStage;
 	double bmi;
 	String height;
@@ -80,8 +92,12 @@ public class FitnessForYouController {
 			//}
 	return noerrors;
 	
-	}*/
-    
+	}
+	
+	*/
+    /**Takes the height and weight info from user input
+     * ensures the user has input a valid number, has error handling
+     */
 
    @FXML
     void userInfo(ActionEvent event) {
@@ -139,7 +155,10 @@ public class FitnessForYouController {
 //			
 //  		};
 //  			
-  		
+  		/**
+  		 * displays the BMI based user info on the main scene
+  		 * @param bmiResultToDisplay
+  		 */
 
 	
   		@FXML
@@ -147,6 +166,11 @@ public class FitnessForYouController {
   			
   			bmiLabel.setText("Your BMI is: " +String.format("%.2f", bmiResultToDisplay ));
   		}
+  		
+  		/**
+  		 * calculates the BMI of the user based on the height and weight input with error handling
+  		 * @param event
+  		 */
   	
   		@FXML
   	    void calculateBMI(ActionEvent event) {
@@ -186,8 +210,12 @@ public class FitnessForYouController {
   		
 
   		
-			
-			
+	/**
+	 * Actual calculation for BMI based on height and weight
+	 * @param weightvalue2 input entered by user
+	 * @param heightvalue2 input entered by user
+	 * @return the BMI number, used by calculateBMI()
+	 */
 		
     	
     
@@ -195,7 +223,10 @@ private double bmicalculation(double weightvalue2, double heightvalue2) {
 			return (weightvalue2)/((heightvalue2)*(heightvalue2));
 			
 		}
-
+/**
+ * An instance of main scene from the determine type of exercise scene
+ * @param event
+ */
 
 @FXML
 void goToMainScene(ActionEvent event) {
@@ -203,8 +234,19 @@ void goToMainScene(ActionEvent event) {
 	Scene mainScene = applicationStage.getScene();
 //	applicationStage.setScene(mainScene);
 }
+
+/**
+ * A method that creates a scene that prompts the user to pick between three exercise options
+ * Based on the button clicked it will go to a different scene
+ * It has a back button to go back to the main scene
+ * @param event button clicked to pick the type of exercise completed from main scene
+ */
  @FXML
  void determinetypeofexercise (ActionEvent event) {
+	 
+     String dayOfWeek = (String) weekExerciseChoiceBox.getValue();
+     Label dayOfWorkout = new Label("Day of the Week: " + dayOfWeek);
+     Label typeOfWorkout = new Label("Choose a Type of Workout: ");
 	 Scene mainScene = applicationStage.getScene();
 	 VBox container = new VBox(10);
 
@@ -214,39 +256,43 @@ void goToMainScene(ActionEvent event) {
 		
 		
 		applicationStage.setScene(userInfoScene);
-		applicationStage.setTitle("Determine type of exercise");
-		// ChoiceBox weekExerciseChoiceBox = new ChoiceBox();
-		//weekExerciseChoiceBox.setOnAction()
+		applicationStage.setTitle("Exercise Options");
+
 		Button walkingButton = new Button("Walking");
 		walkingButton.setOnAction(e-> walking());
-  		
-  		
-  		//walkingButton.setOnAction(new CountW);
+
   		
   		Button joggingButton = new Button("Jogging");
-//  		joggingButton.setOnAction(new CountJ);
-//  		joggingButton.setOnAction(e-> applicationStage.setScene(joggingScene));
+  		joggingButton.setOnAction(e-> jogging());
+  		
+  		
   		Button runningButton = new Button("Running");
-  		//runningButton.setOnAction(new CountR)
- //		runningButton.setOnAction(e-> applicationStage.setScene(runningScene));
+  		runningButton.setOnAction(e-> running());
+
   		Button backToMainScene = new Button("Back");
   	  	
         backToMainScene.setOnAction(e->applicationStage.setScene(mainScene));
   		
   		container.setPadding(new Insets(0,5,0,5));
-  		container.getChildren().addAll( walkingButton, joggingButton,runningButton,backToMainScene);
+  		container.getChildren().addAll(dayOfWorkout, typeOfWorkout,walkingButton, joggingButton,runningButton,backToMainScene);
   				
 	    
  }
  
  
-
+/**
+ * A method that creates the walking scene from the button clicked in the user input scene
+ * It then prompts the user for the amount of time walked
+ * Displays the amount of calories burned 
+ * Has a back button to go back to the input scene
+ */
  
  @FXML
  void walking() {
 	
   		
-	VBox walkingContainer = new VBox();
+	VBox walkingContainer = new VBox(7);
+	walkingContainer.setPadding(new Insets(0,5,0,5));
 	Scene mainScene = applicationStage.getScene();
 	
   		Scene walkingScene = new Scene(walkingContainer,600,400);
@@ -256,9 +302,11 @@ void goToMainScene(ActionEvent event) {
   		System.out.println("sdkgjdfg");
   		
  		HBox durationW = new HBox();
+ 		
   		Label walkingLabel = new Label("Time spent walking");
   		
   		TextField walkingDurationTextField = new TextField();
+  		walkingDurationTextField.setMaxWidth(150);
   		
 //  		// adding label and text box to H box                 
  		durationW.getChildren().addAll(walkingLabel, walkingDurationTextField);
@@ -277,10 +325,100 @@ void goToMainScene(ActionEvent event) {
   		calculateW.setOnAction(e->calculateCaloriesW(walkingDurationTextField, weightvalue, caloriesBurnedW,walkingErrorLabel));	
  }
 			
-	    	
-	    	
-  			
+	
+ 
+ /**
+  * A method that creates the jogging scene from the button clicked in the user input scene
+  * It then prompts the user for the amount of time jogged
+  * Displays the amount of calories burned 
+  * Has a back button to go back to the input scene
+  */
+  
+  @FXML
+  void jogging() {
+ 	
+   		
+ 	VBox joggingContainer = new VBox(7);
+ 	joggingContainer.setPadding(new Insets(0,5,0,5));
+ 	Scene mainScene = applicationStage.getScene();
+ 	
+   		Scene joggingScene = new Scene(joggingContainer,600,400);
+   		applicationStage.setScene(joggingScene);
+   		applicationStage.setTitle("Calories burned for jogging");
+   		// text box with its label in a h box  
+   		System.out.println("sdkgjdfg");
+   		
+  		HBox durationJ = new HBox();
+  		
+   		Label joggingLabel = new Label("Time spent jogging");
+   		
+   		TextField joggingDurationTextField = new TextField();
+   		joggingDurationTextField.setMaxWidth(150);
+   		
+//   		// adding label and text box to H box                 
+  		durationJ.getChildren().addAll(joggingLabel, joggingDurationTextField);
+//   		// adding the H box to the V box                      
+   		
+
+   		Label caloriesBurnedJ = new Label("Calories Burned: ");
+   		
+   		Button calculateJ = new Button("Calculate Calories Burned");
+   		Button backToMainScene = new Button("Back");
+   		Label joggingErrorLabel = new Label("Time error");
+         backToMainScene.setOnAction(e->applicationStage.setScene(mainScene));
+         joggingErrorLabel.setText("gfdh");
+   		joggingContainer.getChildren().addAll(durationJ,joggingLabel,joggingDurationTextField,caloriesBurnedJ,calculateJ,backToMainScene,joggingErrorLabel);
+   		boolean noerrors;
+   		calculateJ.setOnAction(e->calculateCaloriesJ(joggingDurationTextField, weightvalue, caloriesBurnedJ,joggingErrorLabel));	
+  }
+
+ 
+ 
+/**
+* A method that creates the running scene from the button clicked in the user input scene
+* It then prompts the user for the amount of time they ran for
+* Displays the amount of calories burned 
+* Has a back button to go back to the input scene
+*/
+
+@FXML
+void running() {
+	
 		
+	VBox runningContainer = new VBox(7);
+	runningContainer.setPadding(new Insets(0,5,0,5));
+	Scene mainScene = applicationStage.getScene();
+	
+		Scene runningScene = new Scene(runningContainer,600,400);
+		applicationStage.setScene(runningScene);
+		applicationStage.setTitle("Calories burned for running");
+		// text box with its label in a h box  
+		
+		
+		HBox durationR = new HBox();		
+		Label runningLabel = new Label("Time spent running");
+		
+		TextField runningDurationTextField = new TextField();
+		runningDurationTextField.setMaxWidth(150);
+		
+//		// adding label and text box to H box                 
+		durationR.getChildren().addAll(runningLabel, runningDurationTextField);
+//		// adding the H box to the V box                      
+		
+
+		Label caloriesBurnedR = new Label("Calories Burned: ");
+		
+		Button calculateR = new Button("Calculate Calories Burned");
+		Button backToMainScene = new Button("Back");
+		Label runningErrorLabel = new Label("Time error");
+      backToMainScene.setOnAction(e->applicationStage.setScene(mainScene));
+      runningErrorLabel.setText("gfdh");
+		runningContainer.getChildren().addAll(durationR,runningLabel,runningDurationTextField,caloriesBurnedR,calculateR,backToMainScene,runningErrorLabel);
+		boolean noerrors;
+		calculateR.setOnAction(e->calculateCaloriesR(runningDurationTextField, weightvalue, caloriesBurnedR,runningErrorLabel));	
+}
+	    	
+				
 
     	
         // assuming that project is worth 50% towards the course grade
@@ -318,13 +456,15 @@ void goToMainScene(ActionEvent event) {
    
 
 	
+/**
+ * Calculates the calories burned based on the weight and the amount of time spent walking
+ * has error handling	
+ * @param walkingDurationTextField time spent walking
+ * @param weightvalue of the user
+ * @param caloriesBurnedW label to display the amount of calories burned
+ * @param walkingErrorLabel if the user inputs an invalid time
+ */
 
-  		
-  		
-  		
-
-
- 
 
  
  void calculateCaloriesW(TextField walkingDurationTextField, double weightvalue, Label caloriesBurnedW,Label walkingErrorLabel) {
@@ -376,13 +516,119 @@ void goToMainScene(ActionEvent event) {
 				
 			} 
 	}
+ /**
+  * Calculates the calories burned based on the weight and the amount of time spent jogging
+  * has error handling	
+  * @param joggingDurationTextField time spent jogging
+  * @param weightvalue of the user
+  * @param caloriesBurnedJ label to display the amount of calories burned
+  * @param walkingErrorLabel if the user inputs an invalid time
+  */
 
 		
+ void calculateCaloriesJ(TextField joggingDurationTextField, double weightvalue, Label caloriesBurnedJ,Label joggingErrorLabel) {
+		//need to add a get value for the weight
+		int METW = 4;
+		double bodyWeightJ = 0.0;
+		double totalCaloriesBurnedJ = 0.0;
+		
+		String DurationJ= joggingDurationTextField.getText();
+		
+	  	
+	  	
+			TimeInputErrorHandling duration = new TimeInputErrorHandling(DurationJ);
+			boolean noerrors;
+		try {
+				
+				if(duration.check() && joggingDurationTextField.getText() != null ) {
+					noerrors = true;
+					joggingErrorLabel.setText("");
+					timing = Double.parseDouble(DurationJ);
+					bodyWeightJ = weightvalue;
+					//this invokes the class that calculates the calories burned
+					//have to add soemthing the get the bodyweight 
+					System.out.println("fjkdfgdfg" + weightvalue);
+					
+					CountJ caloriesJ = new CountJ(timing, bodyWeightJ);
+					
+					//calories will be caluclated in the Countr class using the getCalorieCalc method
 
-	
-	
-	
-	
+					totalCaloriesBurnedJ += caloriesJ.getCalorieCalc();
+					
+					//maybe add method in CountW class that can asses which day of the week (getDayOfWeek)
+					//updatelabel
+					caloriesBurnedJ.setText(String.format("Calories Burned: "+totalCaloriesBurnedJ));
+
+					}
+
+			
+			} catch (InvalidUserException e1) {
+					noerrors = false;
+					joggingErrorLabel.setText(e1.getMessage());
+					
+					System.out.println("An error was found");					
+
+					
+				} 
+		}
+ 
+ /**
+  * Calculates the calories burned based on the weight and the amount of time spent running
+  * has error handling	
+  * @param runningDurationTextField time spent running
+  * @param weightvalue of the user
+  * @param caloriesBurnedR label to display the amount of calories burned
+  * @param runningErrorLabel if the user inputs an invalid time
+  */
+
+ void calculateCaloriesR(TextField runningDurationTextField, double weightvalue, Label caloriesBurnedR,Label runningErrorLabel) {
+		//need to add a get value for the weight
+		int METW = 4;
+		double bodyWeightR = 0.0;
+		double totalCaloriesBurnedR = 0.0;
+		
+		String DurationR= runningDurationTextField.getText();
+		
+	  	
+	  	
+			TimeInputErrorHandling duration = new TimeInputErrorHandling(DurationR);
+			boolean noerrors;
+		try {
+				
+		
+				if(duration.check() && runningDurationTextField.getText() != null ) {
+					noerrors = true;
+					runningErrorLabel.setText("");
+					timing = Double.parseDouble(DurationR);
+					bodyWeightR = weightvalue;
+					//this invokes the class that calculates the calories burned
+					//have to add soemthing the get the bodyweight 
+					System.out.println("fjkdfgdfg" + weightvalue);
+					
+					CountR caloriesR = new CountR(timing, bodyWeightR);
+					
+					//calories will be caluclated in the Countr class using the getCalorieCalc method
+
+					totalCaloriesBurnedR += caloriesR.getCalorieCalc();
+					
+					//maybe add method in CountW class that can asses which day of the week (getDayOfWeek)
+					//updatelabel
+					caloriesBurnedR.setText(String.format("Calories Burned: "+totalCaloriesBurnedR));
+
+					}
+
+			
+			} catch (InvalidUserException e1) {
+					noerrors = false;
+					runningErrorLabel.setText(e1.getMessage());
+					
+					System.out.println("An error was found");					
+
+					
+				} 
+		}
+
+
 }
  
  

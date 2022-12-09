@@ -10,7 +10,7 @@ public class CountR extends Exercise {
 	/**
 	 * instance variable for the amount of energy used when running, set at a constant
 	 */
-	private int METenergyW = 4;
+	private int METenergyW = 10;
 	
 	/**
 	 * Constructor that sets the instance variables, derived from the parent class of Exercise

@@ -82,12 +82,12 @@ public class UserInputErrorHandling {
 
 		if (check2(height)) {
 			double height = Double.parseDouble(this.height);
-			if (height < 0 || height > 213.36 ) {
+			if (height < 0 || height > 2.8 ) {
 				b = false;
-				throw new InvalidUserException("Height should be between 0 & 213.36" + "." + " " + 
+				throw new InvalidUserException("Height should be between 0 & 2.8 (m)" + "." + " " + 
 						"Invalid Height: " + this.height);			
 			} } else {
-				throw new InvalidUserException("Height textfield is null");
+				throw new InvalidUserException("Height textfield is empty");
 			}
 
 
@@ -109,11 +109,11 @@ public class UserInputErrorHandling {
 
 			if (weight < 0 || weight > 727 ) {
 				b = false;
-				throw new InvalidUserException("Weight should be between 0 & 727" + "." + " " + 
+				throw new InvalidUserException("Weight should be between 0 & 727 (lbs)" + "." + " " + 
 						"Invalid Weight: " + this.weight);	}
 		}
 		else {
-			throw new InvalidUserException("Weight textfield is null");
+			throw new InvalidUserException("Weight textfield is empty");
 		}
 
 		return b;

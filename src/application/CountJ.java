@@ -10,7 +10,7 @@ public class CountJ extends Exercise {
 	/**
 	 * instance variable for the amount of energy used when jogging, set at a constant
 	 */
-	private int METenergyW = 4;
+	private int METenergyW = 8;
 	
 	
 	/**

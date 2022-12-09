@@ -40,14 +40,14 @@ package application;
 				if (period_count_for_time > 1) {
 					b = false;
 	        		throw new InvalidUserException("Don't include the multiple periods: " + "." + "." + " " +
-	        				"Time should be a number. ");
+	        				"Time should be a number minutes. ");
 	    		}	
 
 	        	double time = Double.parseDouble(this.time);
 	        	if (time < 0 || time > 1440 ) {
 	        		b = false;
-	        		throw new InvalidUserException("Time should be between 0 & 1440" + "." + " " + 
-	        					"InvalidTime: " + this.time);			
+	        		throw new InvalidUserException("Time should be between 0 & 1440 minutes" + "." + " " + 
+	        					"Invalid Time: " + this.time + " minutes.");			
 	        	}
 				
 				
