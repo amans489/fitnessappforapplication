@@ -14,7 +14,7 @@
 
 <VBox prefHeight="460.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FitnessForYouController">
    <children>
-      <Label prefHeight="63.0" prefWidth="194.0" text="fitness for you" textOverrun="LEADING_WORD_ELLIPSIS">
+      <Label prefHeight="63.0" prefWidth="194.0" text="Fitness For You" textOverrun="LEADING_WORD_ELLIPSIS">
          <VBox.margin>
             <Insets left="230.0" />
          </VBox.margin>
@@ -41,10 +41,10 @@
          <children>
             <Label text="Determine the day of the week in which you exercise">
                <HBox.margin>
-                  <Insets top="30.0" />
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
             </Label>
-            <ChoiceBox fx:id="weekExerciseChoiceBox" prefWidth="150.0">
+            <ChoiceBox fx:id="weekExerciseChoiceBox">
             	<items>
             	   <FXCollections fx:factory="observableArrayList">
             	   	  <String fx:value="Sunday" />
@@ -58,50 +58,60 @@
             	   </FXCollections>
             	</items>
                <HBox.margin>
-                  <Insets left="150.0" top="25.0" />
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
             </ChoiceBox>
          </children>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      <HBox>
          <children>
-            <Label fx:id="heightLabel" text="Height">
+            <Label fx:id="heightLabel" text="Height (m)">
                <HBox.margin>
-                  <Insets left="30.0" />
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="heightTextField" />
+            <TextField fx:id="heightTextField">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </TextField>
          </children>
       </HBox>
+      <HBox prefHeight="59.0" prefWidth="586.0">
+         <children>
+            <Label fx:id="weightLabel" text="Weight (kg)">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="weightTextField">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="3.0" right="10.0" top="7.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <Button mnemonicParsing="false" onAction="#userInfo" text="Choose Exercise">
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+      </Button>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <HBox prefHeight="59.0" prefWidth="586.0">
-               <children>
-                  <Label fx:id="weightLabel" prefHeight="17.0" prefWidth="392.0" text="Weight">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
-                  <TextField fx:id="weightTextField" prefHeight="25.0" prefWidth="203.0" />
-               </children>
-            </HBox>
-         </children>
-      </HBox>
-      <HBox prefHeight="73.0" prefWidth="586.0">
-         <children>
-            <Button mnemonicParsing="false" onAction="#userInfo" text="Button" />
-            <Button mnemonicParsing="false" onAction="#calculateBMI" prefHeight="25.0" prefWidth="164.0" text="Calculate BMI">
+            <Button mnemonicParsing="false" onAction="#calculateBMI" text="Calculate BMI">
                <HBox.margin>
-                  <Insets left="120.0" />
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
             </Button>
+            <Label fx:id="bmiLabel" text="Your BMI is: ">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="15.0" />
+               </HBox.margin>
+            </Label>
          </children>
       </HBox>
-       <Label fx:id="heightErrorLabel" prefHeight="17.0" prefWidth="463.0" textFill="RED">
-                     <VBox.margin>
-                        <Insets left="30.0" />
-                     </VBox.margin></Label>
-      <Label fx:id="bmiLabel" prefHeight="17.0" prefWidth="303.0" text="fdggsf" />
+      <HBox prefHeight="73.0" prefWidth="586.0" />
+       <Label fx:id="heightErrorLabel" textFill="RED" />
 
    </children>
 </VBox>

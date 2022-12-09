@@ -143,9 +143,9 @@ public class FitnessForYouController {
 
 	
   		@FXML
-  		void displayBMIresult(double bmiresulttodisplay) {
+  		void displayBMIresult(double bmiResultToDisplay) {
   
-  			bmiLabel.setText("Your bmi is: " +bmiresulttodisplay );
+  			bmiLabel.setText("Your bmi is: " + bmiResultToDisplay );
   		}
   	
   		@FXML

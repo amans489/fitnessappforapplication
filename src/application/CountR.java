@@ -7,7 +7,6 @@ public class CountR extends Exercise {
 	public CountR(double run, double pounds) {
 		
 		super(run, pounds);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public int getMETenergyW() {
