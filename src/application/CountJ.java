@@ -1,22 +1,20 @@
 package application;
 
-public class CountJ extends Exercise{
-	
-	private int METenergyJ = 4;
-	CountJ(int energy, double jog, double pounds) {
+public class CountJ extends Exercise {
+	private int METenergyW = 4;
+	public CountJ(double jog, double pounds) {
 		
-		super(energy, jog, pounds);
-		// TODO Auto-generated constructor stub
+		super(jog, pounds);
+		
+	}
+	
+	public int getMETenergyW() {
+		return METenergyW;
 	}
 
-
-	
-
-	// public double calorieCalc (int MET, double distanceRan, double bodyW) {
-
-	// double caloriesBurned = (MET*distanceRan*bodyW)/200;
-	 //return caloriesBurned;
-	 
-	
+	@Override
+	double getCalorieCalc() {
+		return METenergyW*super.weight*super.duration/(200);
+	}
 
 }
