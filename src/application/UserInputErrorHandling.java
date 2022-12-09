@@ -107,9 +107,9 @@ public class UserInputErrorHandling {
 		if (check2(weight)) {
 			double weight = Double.parseDouble(this.weight);
 
-			if (weight < 0 || weight > 727 ) {
+			if (weight < 0 || weight > 635 ) {
 				b = false;
-				throw new InvalidUserException("Weight should be between 0 & 727 (lbs)" + "." + " " + 
+				throw new InvalidUserException("Weight should be between 0 & 635 (kg)" + "." + " " + 
 						"Invalid Weight: " + this.weight);	}
 		}
 		else {
