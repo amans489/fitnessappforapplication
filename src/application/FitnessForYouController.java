@@ -113,11 +113,7 @@ public class FitnessForYouController {
 	 */
 
 
-	@FXML
-	void displayBMIresult(double bmiresulttodisplay) {
-
-		bmiLabel.setText("Your bmi is: " +bmiresulttodisplay );
-	}
+	
 
 	/**
 	 * calculates the BMI of the user based on the height and weight input with errorhandling
@@ -135,17 +131,18 @@ public class FitnessForYouController {
 		boolean noerrors;
 		try {
 
-			if(heightAndWeight.check()) {
+			if(heightAndWeight.check() && heightAndWeight.check2(heightvalues) && heightAndWeight.check2(weightvalues)) {
 				noerrors = true;
 
 				bmiresult = bmicalculation(weightvalue, heightvalue);	
 				HealthIndicators health = new HealthIndicators(heightTextField.getText(),weightTextField.getText());
 				bmiresult = health.getBMI();
-				displayBMIresult(bmiresult);
+				bmiLabel.setText("Your bmi is: " + bmiresult);
 
 
 
 			}  
+			
 
 
 		} catch (InvalidUserException e1) {
@@ -267,6 +264,56 @@ public class FitnessForYouController {
 	 * Displays the amount of calories burned
 	 * Has a back button to go back to the input scene
 	 */
+	/** 
+	 * Calculates the calories burned based on the weight and the amount of
+	 * time spent walking 
+	 * has error handling 
+	 * @param walkingDurationTextField time spent walking
+	 * @param weightvalue of the user
+	 * @param caloriesBurnedW label to display the amount of calories burned
+	 * @param walkingErrorLabel if the user inputs an ivalid time
+	 */
+
+
+	void calculateCaloriesW(TextField walkingDurationTextField, double weightvalue, Label caloriesBurnedW,Label walkingErrorLabel) {
+		//need to add a get value for the weight
+		int METW = 4;
+		double bodyWeightW = 0.0;
+		double totalCaloriesBurnedW = 0.0;
+
+		String DurationW= walkingDurationTextField.getText();
+
+
+
+		TimeInputErrorHandling duration = new TimeInputErrorHandling(DurationW);
+		boolean noerrors;
+		try {
+
+			if(duration.check() && walkingDurationTextField.getText() != null ) {
+				noerrors = true;
+				walkingErrorLabel.setText("");
+				timing = Double.parseDouble(DurationW);
+				bodyWeightW = weightvalue;
+				CountW caloriesW = new CountW(timing, bodyWeightW);
+				totalCaloriesBurnedW += caloriesW.getCalorieCalc();
+				caloriesBurnedW.setText(String.format("Calories Burned: "+totalCaloriesBurnedW));
+
+			}
+
+
+
+
+
+		} catch (InvalidUserException e1) {
+			noerrors = false;
+			walkingErrorLabel.setText(e1.getMessage());
+
+			System.out.println("An error was found");
+
+
+
+		} 
+	}
 
 	@FXML
 	void jogging() {
@@ -345,56 +392,7 @@ public class FitnessForYouController {
 
 
 
-	/** 
-	 * Calculates the calories burned based on the weight and the amount of
-	 * time spent walking 
-	 * has error handling 
-	 * @param walkingDurationTextField time spent walking
-	 * @param weightvalue of the user
-	 * @param caloriesBurnedW label to display the amount of calories burned
-	 * @param walkingErrorLabel if the user inputs an ivalid time
-	 */
-
-
-	void calculateCaloriesW(TextField walkingDurationTextField, double weightvalue, Label caloriesBurnedW,Label walkingErrorLabel) {
-		//need to add a get value for the weight
-		int METW = 4;
-		double bodyWeightW = 0.0;
-		double totalCaloriesBurnedW = 0.0;
-
-		String DurationW= walkingDurationTextField.getText();
-
-
-
-		TimeInputErrorHandling duration = new TimeInputErrorHandling(DurationW);
-		boolean noerrors;
-		try {
-
-			if(duration.check() && walkingDurationTextField.getText() != null ) {
-				noerrors = true;
-				walkingErrorLabel.setText("");
-				timing = Double.parseDouble(DurationW);
-				bodyWeightW = weightvalue;
-				CountW caloriesW = new CountW(timing, bodyWeightW);
-				totalCaloriesBurnedW += caloriesW.getCalorieCalc();
-				caloriesBurnedW.setText(String.format("Calories Burned: "+totalCaloriesBurnedW));
-
-			}
-
-
-
-
-
-		} catch (InvalidUserException e1) {
-			noerrors = false;
-			walkingErrorLabel.setText(e1.getMessage());
-
-			System.out.println("An error was found");
-
-
-
-		} 
-	}
+	
 	/** 
 	 * Calculates the calories burned based on the weight and the amount of
 	 * time spent jogging
